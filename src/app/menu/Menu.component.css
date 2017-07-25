@@ -1,0 +1,86 @@
+*{
+  padding: 0;
+  margin : 0;
+}
+
+/*以上css可不用，仅作为展示外观样式*/
+
+.menu{
+  width : 12em;
+}
+
+.menu>li{
+  list-style: none;
+}
+
+.menu  .title{
+  text-align: center;
+  display: inline;
+  float: left;
+  margin-left: 36px;
+}
+
+.menu  .triangle{
+  display: inline;
+  float: left;
+}
+
+.menu  .title-bar{
+  display: block;
+  color:black;
+  background: #f7fffc;
+  height: 2em;
+  text-align: center;
+  padding-top: 0.3em;
+  cursor: pointer;
+  border:1px #cfecff solid;
+  margin-top: 1px;
+}
+
+ .menu .link{
+  color:blue;
+  background: #cfecff;
+  height: 2em;
+  text-align: center;
+  padding-top: 0.3em;
+  cursor: pointer;
+  margin-top: 1px;
+}
+
+ .menu .link:hover{
+   color:#cfecff;
+   background: #8e93ff;
+}
+
+.menu .select{
+  color:#cfecff;
+  background: blue;
+  height: 2em;
+  text-align: center;
+  padding-top: 0.3em;
+  cursor: pointer;
+  margin-top: 1px;
+}
+
+.triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 12px solid #74baff;
+  position: relative;
+  left: 10px;
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 12px solid #74baff;
+  position: relative;
+  left: 10px;
+}
+
+
+

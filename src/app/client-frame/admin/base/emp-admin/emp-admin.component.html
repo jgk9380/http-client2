@@ -1,0 +1,71 @@
+<div style="width: 70%">
+  <form>
+    <label for="w"> 查询：</label>
+    <input #where id="w" type="text" (keyup)="0">
+    <button (click)="query(where.value)">查询</button>
+    <button type="button" pButton (click)="export(dt)"  >导出</button>
+  </form>
+  <!--<p-dataTable [value]="getCurrentPageEmp()" [selectionMode]="single" [paginator]="true">-->
+  <p-dataTable #dt [value]="emps" [selectionMode]="'single'" [paginator]="true" [rows]="15"
+               [resizableColumns]="true" [(selection)]="currentEmp" sortField="depart.id"
+               (onRowDblclick)="onRowDblclick($event)">
+    <header>
+      <span>员工列表</span>
+    </header>
+    <p-column field="id" header="编号" [sortable]="true" [style]="style()"></p-column>
+    <p-column field="depart.name" header="部门" [sortable]="true"></p-column>
+    <p-column field="name" header="姓名" [sortable]="true"></p-column>
+    <p-column field="tele" header="电话" [sortable]="true"></p-column>
+    <p-column field="positionTypeId" header="岗位" [sortable]="true">
+      <template let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+        <!--<span>{{getPositionName(row.positionTypeId)}}{{col}}{{rowIndex}}</span>-->
+        <span>{{getPositionName(row.positionTypeId)}}</span>
+      </template>
+    </p-column>
+    <p-column field="staffId" header="营业工号"></p-column>
+    <footer>
+      <span>双击可编辑</span>
+    </footer>
+  </p-dataTable>
+  <!--<p-paginator rows={{pageSize}} totalRecords={{emps?.length}} pageLinkSize="10"-->
+  <!--(onPageChange)="paginate($event)"></p-paginator>-->
+</div>
+
+<p-dialog header="修改员工资料"  width="400" height="300"  [(visible)]="editMode"
+          [modal]="true"[resizable]="false" [closable]="true"  [draggable]="false" [closeOnEscape]="true">
+  <form class="form-horizontal" role="form" *ngIf="currentEmp">
+    <div class="form-group">
+      <label for="empName" class="col-sm-4 control-label">员工名称：</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="empName" [(ngModel)]="currentEmp.name" name="empName" disabled="true">
+      </div>
+      <hr/>
+      <label for="depart" class="col-sm-4 control-label">部门：</label>
+      <div class="col-sm-8">
+        <select class="form-control" id="depart" [(ngModel)]="currentEmp.depart.id" name="depart">
+          <option *ngFor="let depart of departOption" [value]="depart.value">{{depart.label}}</option>
+        </select>
+      </div>
+      <hr/>
+      <label for="position" class="col-sm-4 control-label">岗位：</label>
+      <div class="col-sm-8">
+        <select class="form-control" id="position" [(ngModel)]="currentEmp.positionTypeId" name="position">
+          <option *ngFor="let posi of postionOption" [value]="posi.value">{{posi.label}}</option>
+        </select>
+      </div>
+      <label for="staffId" class="col-sm-4 control-label">营业工号：</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="staffId" [(ngModel)]="currentEmp.staffId" name="empName">
+      </div>
+      <hr/>
+    </div>
+
+    <div class="form-group">
+      <span class="col-sm-offset-3 col-sm-3">
+          <button type="button" (click)="editSubmit()" class="btn btn-default btn-lg" >提交</button>
+      </span>
+    </div>
+  </form>
+
+</p-dialog>
+

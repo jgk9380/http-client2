@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    body {
+      display: flex;
+      flex-direction: column; /*row，row-reverse*/
+      min-height: 100vh;
+      /*max-height:100vh;*/
+      padding: 0;
+      margin: 0;
+      /*background: #08f4ff;*/
+    }
+
+    header {
+      flex: 1;
+      background: #fffdd7;
+      max-height: 5em;
+    }
+
+    .nav-bar {
+      flex: 1;
+      max-height: 1.2em;
+      background: black;
+      color: white;
+      font-size: 1.2em;
+    }
+    .main {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      /*background: #f6edff;*/
+    }
+
+    .main .nav-menu {
+      /* 两个边栏的宽度设为12em */
+      flex: 0 0 12em;
+      /*flex: flex-grow flex-shrink flex-basis|auto|initial|inherit;
+        flex-grow	一个数字，规定项目将相对于其他灵活的项目进行扩展的量。
+        flex-shrink	一个数字，规定项目将相对于其他灵活的项目进行收缩的量。
+        flex-basis	项目的长度。合法值："auto"、"inherit" 或一个后跟 "%"、"px"、"em" 或任何其他长度单位的数字。
+      */
+      background: #ffd7e7;
+    }
+
+    .main .nav-menu-toggle {
+      flex: 0 0 18px;
+      background: #ffd3e9;
+    }
+    .nav-menu-toggle .triangle-left {
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 16px solid #74baff;
+      position: absolute;
+      left: auto;
+      top: 50%;
+    }
+
+    .main .content {
+      flex: 1;
+      background: #d9f6ff;
+    }
+
+    .main .ads {
+      /* 两个边栏的宽度设为12em */
+      flex: 0 0 12em;
+      background: #ffd7e7;
+      /*display: none;*/
+      order: 2;
+    }
+
+    footer {
+      flex: 1; /*让所有弹性盒模型对象的子元素都有相同的长度，忽略它们内部的内容：*/
+      background: #fffdd7;
+      max-height: 1.5em;
+      font-size: 1.2em;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .main .nav-menu {
+
+      }
+
+      .ads {
+        display: none;
+      }
+
+      .content {
+        flex: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  header
+</header>
+<div class="nav-bar">nav-bar</div>
+<div class="main">
+  <nav class="nav-menu">nav-menu</nav>
+  <div class="nav-menu-toggle">
+      <div class="triangle-left"></div>
+  </div>
+  <main class="content">content</main>
+  <aside class="ads">ads</aside>
+</div>
+<footer>footer</footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<div class="container">
+  <h2 class="text-center" style="margin: 1.5em">
+    {{title}}
+  </h2>
+  <form role="form" class="form-horizontal">
+    <div class="form-group">
+      <label for="tele" class="col-sm-2 control-label">电话号码：</label>
+      <div class="col-sm-2">
+        <input #tele type="text" class="form-control" id="tele" placeholder="请输入电话号码" (keyup.enter)="query(tele.value)">
+      </div>
+      <div class="col-sm-offset-3 col-sm-1">
+        <button type="submit" class="btn btn-default" (click)="query(tele.value)">查询</button>
+      </div>
+    </div>
+  </form>
+  <br/>
+
+  <div class="content-section implementation">
+    <!--<p-messages [value]="msgs" [style]="'{width: 20em;}'"></p-messages>-->
+    <p-growl [value]="msgs"></p-growl>
+  </div>
+  <br/>
+
+  <div *ngIf="stockPromotions&&stockPromotions[0]" class="result">
+    <span class="item-reslut-title">该用户可参加如下活动：</span>
+    <br/><br/>
+    <div *ngFor="let stockPromotion of stockPromotions;let i=index" class="item">
+      <p class="item-title">活动{{i|num2chinese}}:</p>
+      <p class="indent">活动名称：{{stockPromotion.promotionName}}</p>
+      <p class="indent">活动内容：{{stockPromotion.remark}}</p>
+      <br/>
+    </div>
+  </div>
+  <p-dataTable [value]="stockPromotions" *ngIf="stockPromotions&&stockPromotions[0]">
+    <p-column field="promotionName" header="Vin"></p-column>
+    <p-column field="remark" header="Year"></p-column>
+  </p-dataTable>
+</div>
+
+

@@ -1,0 +1,22 @@
+.result{
+    font-size: 1.3em;
+}
+.item-reslut-title{
+   font-size: 1.3em;
+   font-weight:bold;
+   color: #ff2e3b;
+}
+.item-title{
+  font-weight:bold;
+  color: #ff2e3b;
+
+}
+.item{
+  color: #172dee;
+  font-size: 1.2em;
+}
+
+indent{
+  /*padding:0 0 0 2.4em;*/
+  text-ident:2.4em;
+}

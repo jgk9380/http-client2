@@ -1,0 +1,39 @@
+
+div.title{
+  display: inline;
+  float: left;
+  margin-left: 2em;
+  padding-top: 0.15em;
+  /*height: 2em;*/
+  color: white;
+  vertical-align: middle;
+}
+
+div.title:hover {
+  color: #feff8d;
+  /*background-color: #DDD;*/
+  /*left: .1em;*/
+  /*font-size:calc(1em + 1px);*/
+  padding-top: 0.18em;
+  cursor: pointer;
+  vertical-align: middle;
+  /*cursor: hand;*/
+}
+
+/*.nav-bar {*/
+  /*flex: 1;*/
+  /*max-height: 2em;*/
+  /*background: black;*/
+  /*color: white;*/
+  /*font-size: 1.2em;*/
+/*}*/
+
+.current{
+  color: #feff8d;
+}
+
+.greeting{
+  display: inline;
+  float: left;
+  margin-right: 2em;
+}

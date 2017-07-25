@@ -1,0 +1,9 @@
+commmanager/commmanager@ora11g
+select * from commmanager.employees
+select * from jemtest.j_role
+select * from jemtest.j_user_role
+select * from jemtest.J_AUTHORITY
+select * from jemtest.J_USER_AUTH
+select * from jemtest.J_ROLE_AUTH
+select * from commmanager.login_users
+select * from commmanager.CODE_DEPART

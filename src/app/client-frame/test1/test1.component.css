@@ -1,0 +1,10 @@
+.main{
+  /*display: ;*/
+  /*flex-direction:row;*/
+}
+.menu{
+float: left;
+}
+.content{
+  float: left;
+}

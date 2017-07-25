@@ -1,0 +1,77 @@
+
+<div id="mainFrame"   >
+  <header>
+    <div style="margin-top: 0.5em">盐城联通</div>
+  </header>
+  <div class="menu-bar">
+    <hc-menu-bar></hc-menu-bar>
+    <div class="greeting" >
+      <span>
+        欢迎你：{{loginName}}&nbsp;&nbsp;
+      </span>
+      <span class="fa fa-key " (click)="showEdit()">&nbsp;</span>
+      <span class="fa fa-lock" (click)="loginOut()">&nbsp;</span>
+    </div>
+  </div>
+  <div class="main">
+    <!--<nav class="nav-menu" *ngIf="menuShow">-->
+      <!--&lt;!&ndash;<hc-menu-pad></hc-menu-pad>&ndash;&gt;-->
+      <!--<router-outlet name="menu"></router-outlet>-->
+    <!--</nav>-->
+    <!--<div class="nav-menu-toggle" (click)="menuToggle()">-->
+      <!--<div [class.triangle-left]="menuShow" [class.triangle-right]="!menuShow"></div>-->
+    <!--</div>-->
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+    <!--<aside class="ads" *ngIf="adsShow">ads</aside>-->
+    <!--<aside class="ads" *ngIf="true">-->
+      <!--<router-outlet name="ads"></router-outlet>-->
+    <!--</aside>-->
+  </div>
+  <footer>
+    <div style="margin-right: 3em">互联网部 at 2017-01-12</div>
+  </footer>
+  <div class="content-section implementation">
+    <!--<p-messages [value]="msgs" [style]="'{width: 20em;}'"></p-messages>-->
+    <p-growl [value]="gc.msgs"></p-growl>
+  </div>
+</div>
+<!--<p-dialog header="登录" [(visible)]="display"  modal="true" width="400" resizable="false"  closable="true" draggable="false" >-->
+<!--<http-client-loginUserAdmin></http-client-loginUserAdmin>-->
+<!--&lt;!&ndash;需要 font-awesone 支持&ndash;&gt;-->
+<!--</p-dialog>-->
+
+
+<p-dialog header="修改密码" [(visible)]="showEditPwd" [modal]="true" width="400" [resizable]="false" [closable]="true"
+          [draggable]="false" [closeOnEscape]="true">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="pwd1" class="col-sm-4 control-label">密码：</label>
+      <div class="col-sm-8">
+        <input type="password" class="form-control" id="pwd1" placeholder="请输入密码" [(ngModel)]="newPwd1" name="pwd">
+      </div>
+      <hr/>
+      <label for="pwd2" class="col-sm-4 control-label">重复：</label>
+      <div class="col-sm-8">
+        <input type="password" class="form-control" id="pwd2" placeholder="请输入密码" [(ngModel)]="newPwd2" name="pwd">
+      </div>
+    </div>
+    <div class="form-group" *ngIf="info">
+      <div class="col-sm-offset-3 col-sm-9">
+        <label style="color: red">
+          {{info}}
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <span class="col-sm-offset-2 col-sm-2">
+        <button type="button" id="editpwd" class="btn btn-primary" (click)="editPwd()">修改密码</button>
+      </span>
+      <span class="col-sm-offset-2 col-sm-2">
+        <button type="button" id="close" class="btn btn-primary" (click)="showEditPwd=false">关闭</button>
+      </span>
+    </div>
+  </form>
+</p-dialog>

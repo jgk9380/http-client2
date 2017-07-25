@@ -1,0 +1,21 @@
+<ul class="menu" *ngIf="ms.currentNbi">
+  <li *ngFor="let item of ms.currentNbi.childMenu">
+    <div *ngIf="!item.routerLink">
+      <div class="title-bar" (click)="ms.expanded(item)">
+        <div class="triangle" [class.triangle-down]="item.expanded"  [class.triangle-right]="!item.expanded"></div>
+        <div class="title">{{item.label}}</div>
+      </div>
+      <ul class='list-se' *ngIf="item.items&&item.expanded">
+        <li *ngFor="let seItem of item.items">
+            <p  [class.link]="!seItem.isSelected"  [class.select]="seItem.isSelected"  (click)="ms.click(seItem)">{{seItem.label}}</p>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="item.routerLink">
+      <p [class.link]="!item.isSelected"  [class.select]="item.isSelected" (click)="ms.click(item)">{{item.label}}</p>
+    </div>
+  </li>
+</ul>
+
+
+

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="cube2.css">
+    <!--<script src="../node_modules/jquery/dist/jquery.js"></script>-->
+
+  <script src="../../../node_modules/jquery/dist/jquery.js"></script>
+  <script src="cube2.js"></script>
+
+</head>
+<body>
+<!-- --- @start control section-->
+<div class="controls">
+    <!-- --- @start button-wrapper-->
+    <div class="button-wrapper">
+        <div>
+            <button type="button" data-theme="flat" class="themer selected">扁平效果  </button>
+            <button type="button" data-theme="realistic" class="themer">立体效果  </button>
+            <button type="button" class="scrambler">打乱魔方</button>
+        </div>
+    </div>
+</div>
+<h1>HTML5魔方</h1>
+<h2>用鼠标拖拽页面任何地方，可以让魔方旋转</h2>
+<h2>拖拽魔方上的方块，可以自由拧转魔方</h2>
+<h3><b>请注意:</b>魔方的中间一层是无法转动的，就跟你玩真实的魔方一样。</h3>
+<!-- --- @start canvas-->
+<div class="canvas theme-flat">
+    <div class="cube-wrapper">
+        <div class="cube">
+            <div data-x="y" data-y="x" data-control="top" class="swiper top">1</div>
+            <div data-x="y" data-y="x" data-control="bottom" class="swiper bottom">2</div>
+            <div data-x="y" data-y="z" data-control="left" class="swiper left">3</div>
+            <div data-x="y" data-y="z" data-control="right" class="swiper right">4</div>
+            <div data-x="z" data-y="x" data-control="front" class="swiper front">5</div>
+            <div data-x="z" data-y="x" data-control="back" class="swiper back">6</div>
+            <!-- --- @start grip-->
+            <div class="grip">
+                <div class="axis axis-grip"></div>
+            </div>
+            <!-- --- @start parts-->
+            <div data-x="0" data-y="0" data-z="0" class="cube-part-wrapper cube-part-wrapper-000">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom yellow">
+                            <div class="sticker">000</div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left red">
+                            <div class="sticker">000</div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front blue">
+                            <div class="sticker">000</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="0" data-y="0" data-z="1" class="cube-part-wrapper cube-part-wrapper-001">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left red">
+                            <div class="sticker">001</div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front blue">
+                            <div class="sticker">001</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="0" data-y="0" data-z="2" class="cube-part-wrapper cube-part-wrapper-002">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top white">
+                            <div class="sticker" style="color: black">002</div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left red">
+                            <div class="sticker">002</div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front blue">
+                            <div class="sticker">002</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="0" data-y="1" data-z="0" class="cube-part-wrapper cube-part-wrapper-010">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom yellow">
+                            <div class="sticker">010</div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front blue">
+                            <div class="sticker">010</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="0" data-y="1" data-z="1" class="cube-part-wrapper cube-part-wrapper-011">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front blue">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="0" data-y="1" data-z="2" class="cube-part-wrapper cube-part-wrapper-012">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top white">
+                            <div class="sticker" style="color: black"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker">div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front blue">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="0" data-y="2" data-z="0" class="cube-part-wrapper cube-part-wrapper-020">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom yellow">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right orange">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front blue">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="0" data-y="2" data-z="1" class="cube-part-wrapper cube-part-wrapper-021">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right orange">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front blue">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="0" data-y="2" data-z="2" class="cube-part-wrapper cube-part-wrapper-022">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top white">
+                            <div class="sticker" style="color: black"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right orange">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front blue">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="1" data-y="0" data-z="0" class="cube-part-wrapper cube-part-wrapper-100">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom yellow">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left red">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="1" data-y="0" data-z="1" class="cube-part-wrapper cube-part-wrapper-101">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left red">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="1" data-y="0" data-z="2" class="cube-part-wrapper cube-part-wrapper-102">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top white">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left red">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="1" data-y="1" data-z="0" class="cube-part-wrapper cube-part-wrapper-110">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom yellow">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="1" data-y="1" data-z="1" class="cube-part-wrapper cube-part-wrapper-111">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker">st</div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker">sb</div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker">sr</div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker">sl</div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker">sb</div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker">sf</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="1" data-y="1" data-z="2" class="cube-part-wrapper cube-part-wrapper-112">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top white">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="1" data-y="2" data-z="0" class="cube-part-wrapper cube-part-wrapper-120">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom yellow">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right orange">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="1" data-y="2" data-z="1" class="cube-part-wrapper cube-part-wrapper-121">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right orange">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="1" data-y="2" data-z="2" class="cube-part-wrapper cube-part-wrapper-122">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top white">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right orange">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="2" data-y="0" data-z="0" class="cube-part-wrapper cube-part-wrapper-200">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom yellow">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left red">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back green">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="2" data-y="0" data-z="1" class="cube-part-wrapper cube-part-wrapper-201">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left red">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back green">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="2" data-y="0" data-z="2" class="cube-part-wrapper cube-part-wrapper-202">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top white">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left red">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back green">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="2" data-y="1" data-z="0" class="cube-part-wrapper cube-part-wrapper-210">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom yellow">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back green">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="2" data-y="1" data-z="1" class="cube-part-wrapper cube-part-wrapper-211">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back green">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="2" data-y="1" data-z="2" class="cube-part-wrapper cube-part-wrapper-212">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top white">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back green">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="2" data-y="2" data-z="0" class="cube-part-wrapper cube-part-wrapper-220">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker">220</div>
+                        </li>
+                        <li class="side bottom yellow">
+                            <div class="sticker">220</div>
+                        </li>
+                        <li class="side right orange">
+                            <div class="sticker">220</div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back green">
+                            <div class="sticker">220</div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="2" data-y="2" data-z="1" class="cube-part-wrapper cube-part-wrapper-221">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right orange">
+                            <div class="sticker">221</div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back green">
+                            <div class="sticker">221</div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker">221</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-x="2" data-y="2" data-z="2" class="cube-part-wrapper cube-part-wrapper-222">
+                <div class="axis axis-part">
+                    <ul class="cube-part">
+                        <li class="side top white">
+                            <div class="sticker" style="color:black">top</div>
+                        </li>
+                        <li class="side bottom">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side right orange">
+                            <div class="sticker">right</div>
+                        </li>
+                        <li class="side left">
+                            <div class="sticker"></div>
+                        </li>
+                        <li class="side back green">
+                            <div class="sticker">back</div>
+                        </li>
+                        <li class="side front">
+                            <div class="sticker"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

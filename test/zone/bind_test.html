@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+</head>
+
+<body>
+<span>ID原来可以直接作为变量使用</span>
+<h1>Basic Example</h1>
+
+<button id="b1">b1</button>
+
+
+<script>
+  function main () {
+      console.log("bind.b1")
+    b1.addEventListener('click', b1Click);
+  }
+  function b1Click (event) {
+    console.log("b1Click："+event.source);
+    //b2.addEventListener('click', throwError);
+  }
+main();
+
+</script>
+</body>
+</html>
+

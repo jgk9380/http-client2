@@ -1,0 +1,142 @@
+
+
+#mainFrame {
+  display: flex;
+  flex-direction: column; /*row，row-reverse*/
+  min-height: 100vh;
+  max-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  flex: 1;
+  background: #fffdd7;
+  font-size: 2em;
+  color: #514cd3;
+  max-height: 2.5em;
+  min-height: 2.5em;
+  text-align: center;
+}
+
+.menu-bar {
+  flex: 1;
+  max-height: 2em;
+  background: black;
+  color: white;
+  font-size: 1.2em;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  /*background: #f6edff;*/
+}
+
+.main .nav-menu {
+  /* 两个边栏的宽度设为12em */
+  flex: 0 0 12em;
+  /*flex: flex-grow flex-shrink flex-basis|auto|initial|inherit;
+    flex-grow	一个数字，规定项目将相对于其他灵活的项目进行扩展的量。
+    flex-shrink	一个数字，规定项目将相对于其他灵活的项目进行收缩的量。
+    flex-basis	项目的长度。合法值："auto"、"inherit" 或一个后跟 "%"、"px"、"em" 或任何其他长度单位的数字。
+  */
+  background: #ffd7e7;
+}
+
+.main .content {
+  flex: 1;
+  background: #d9f6ff;
+  padding-left: 2em;
+  padding-top: 2em;
+  overflow: scroll;
+}
+
+.main .ads {
+  /* 两个边栏的宽度设为12em */
+  flex: 0 0 12em;
+  background: #ffd7e7;
+  /*display: none;*/
+  order: 2;
+}
+
+footer {
+  flex: 1; /*让所有弹性盒模型对象的子元素都有相同的长度，忽略它们内部的内容：*/
+  background: #fffdd7;
+  max-height: 1.5em;
+  min-height: 1.5em;
+  font-size: 1.2em;
+  text-align: right;
+}
+
+/*@media (max-width: 768px) {*/
+/*.main {*/
+/*flex-direction: column;*/
+/*flex: 1;*/
+/*}*/
+
+/*.main .nav-menu {*/
+
+/*}*/
+
+/*.ads {*/
+/*display: none;*/
+/*}*/
+
+/*.content {*/
+/*flex: auto;*/
+/*}*/
+/*}*/
+
+.nav-menu-toggle {
+  background: rgba(53, 255, 50, 0.23);
+  /*height:calc(100vh - 5em);*/
+  width: 12px;
+}
+
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 12px solid #74baff;
+  position: absolute;
+  left: auto;
+  top: 50%;
+}
+
+.triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 12px solid #74baff;
+  position: absolute;
+  left: auto;
+  top: 50%;
+}
+
+.ui-dialog-titlebar {
+  background: #adc9ff;
+}
+
+.ui-dialog-title {
+  background: #adc9ff;
+}
+
+#login {
+  margin-left: 5em;
+  margin-top: 20px;
+}
+
+.greeting {
+  display: inline;
+  float: right;
+  margin-right: 2em;
+}
+
+
+#loginDialog hr{
+  color: blue;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../../node_modules/zone.js/dist/zone.js"></script>
+  <script src="../../node_modules/zone.js/dist/long-stack-trace-zone.js"></script>
+</head>
+
+<body>
+
+<h1>Basic Example</h1>
+<script>
+  var log = function(phase){
+    return function(){
+      console.log("I am in zone.js " + phase + "!");
+    };
+  };
+  Zone.current.fork({
+    onZoneCreated: log("onZoneCreated"),
+    beforeTask: log("beforeTask"),
+    afterTask: log("afterTask"),
+  }).run(function(){
+    var methodLog = function(func){
+        return function(){
+          console.log("I am from " + func + " function!");
+        };
+      },
+      foo = methodLog("foo"),
+      bar = methodLog("bar"),
+      baz = function(){
+        setTimeout(methodLog('baz in setTimeout'), 0);
+      };
+
+    foo();
+    baz();
+    bar();
+  });
+</script>
+
+
+</body>
+</html>
+

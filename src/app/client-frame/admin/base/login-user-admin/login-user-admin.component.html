@@ -1,0 +1,17 @@
+<div style="width: 70%">
+
+    <p-dataTable #dt [value]="loginUsers" [selectionMode]="'single'" [paginator]="true" [rows]="15"
+                 [resizableColumns]="true">
+    <header>
+      <span>员工列表</span>
+    </header>
+    <p-column field="name" header="登录工号" [sortable]="true" ></p-column>
+    <p-column field="password" header="密码" [sortable]="true"></p-column>
+    <p-column field="employee.name" header="姓名" [sortable]="true"></p-column>
+    <p-column field="employee.tele" header="电话" [sortable]="true"></p-column>
+    <footer>
+      <span>双击可编辑</span>
+    </footer>
+  </p-dataTable>
+
+</div>
