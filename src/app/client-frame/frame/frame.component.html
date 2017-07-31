@@ -1,11 +1,10 @@
-
-<div id="mainFrame"   >
+<div id="mainFrame">
   <header>
     <div style="margin-top: 0.5em">盐城联通</div>
   </header>
   <div class="menu-bar">
     <hc-menu-bar></hc-menu-bar>
-    <div class="greeting" >
+    <div class="greeting">
       <span>
         欢迎你：{{loginName}}&nbsp;&nbsp;
       </span>
@@ -15,18 +14,20 @@
   </div>
   <div class="main">
     <!--<nav class="nav-menu" *ngIf="menuShow">-->
-      <!--&lt;!&ndash;<hc-menu-pad></hc-menu-pad>&ndash;&gt;-->
-      <!--<router-outlet name="menu"></router-outlet>-->
+    <!--&lt;!&ndash;<hc-menu-pad></hc-menu-pad>&ndash;&gt;-->
+    <!--<router-outlet name="menu"></router-outlet>-->
     <!--</nav>-->
     <!--<div class="nav-menu-toggle" (click)="menuToggle()">-->
-      <!--<div [class.triangle-left]="menuShow" [class.triangle-right]="!menuShow"></div>-->
+    <!--<div [class.triangle-left]="menuShow" [class.triangle-right]="!menuShow"></div>-->
     <!--</div>-->
     <main class="content">
-      <router-outlet></router-outlet>
+      <div class="frame-let">
+        <router-outlet></router-outlet>
+      </div>
     </main>
     <!--<aside class="ads" *ngIf="adsShow">ads</aside>-->
     <!--<aside class="ads" *ngIf="true">-->
-      <!--<router-outlet name="ads"></router-outlet>-->
+    <!--<router-outlet name="ads"></router-outlet>-->
     <!--</aside>-->
   </div>
   <footer>

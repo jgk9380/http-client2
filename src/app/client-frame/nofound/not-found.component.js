@@ -15,8 +15,8 @@ var Test1Component = (function () {
     Test1Component = __decorate([
         core_1.Component({
             selector: 'http-client-test1',
-            templateUrl: 'test1.component.html',
-            styleUrls: ['test1.component.css']
+            templateUrl: 'not-found.component.html',
+            styleUrls: ['not-found.component.css']
         })
     ], Test1Component);
     return Test1Component;

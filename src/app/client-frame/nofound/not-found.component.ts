@@ -2,10 +2,10 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 
 @Component({
   selector: 'http-client-test1',
-  templateUrl: 'test1.component.html',
-  styleUrls: ['test1.component.css']
+  templateUrl: 'not-found.component.html',
+  styleUrls: ['not-found.component.css']
 })
-export class Test1Component implements OnInit {
+export class NotFoundComponent implements OnInit {
 
   //constructor(private ly:NgLayer, private vcRef:ViewContainerRef) { }
   constructor() { }

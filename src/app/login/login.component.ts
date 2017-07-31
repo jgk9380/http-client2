@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         this.pwd = this.ls.pwd
   }
   close(){
-    this.router.navigate([this.ls.preLoginUrl||"frame/test1"]);
+    this.router.navigate([this.ls.preLoginUrl||"frame"]);
   }
 
 

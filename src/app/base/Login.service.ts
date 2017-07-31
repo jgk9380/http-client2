@@ -26,7 +26,7 @@ export class LoginService  {
     //TODO 添加注销逻辑 ,注销成功过后
     this.loginUser=null;
     this.authToken=null;
-    localStorage["userId"] = "";
+    //localStorage["userId"] = "";
     localStorage["pwd"] = "";
     return Promise.resolve(true);
   }

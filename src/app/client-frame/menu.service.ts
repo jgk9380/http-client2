@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 
 
 @Injectable()
@@ -10,15 +10,12 @@ export class MenuService {
   lastMenuItem: MenuItem[] = [];
   currentMenuItem: MenuItem;
 
-  constructor(private router: Router) {
-    this.currentNbi = new NavBarItem("报表查询", "/http-client-test1");
+  constructor(private router: Router, private route:ActivatedRoute) {
+    this.currentNbi = new NavBarItem("工作计划", "frame/wp")
     this.currentNbi.isSelected = true;
-
     this.nbiItems.push(this.currentNbi);
-    this.nbiItems.push(new NavBarItem("登录", "login"));
-    this.nbiItems.push(new NavBarItem("系统管理", "frame/test1"));
-    this.nbiItems.push(new NavBarItem("工作计划", "frame/test2"));
-
+    this.nbiItems.push(new NavBarItem("报表查询", "frame/nofound"));
+    this.nbiItems.push(new NavBarItem("系统管理", "frame/sysAdmin"));
   }
 
   getCurrentNavBarItem(): NavBarItem[] {

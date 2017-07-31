@@ -112,7 +112,7 @@ var MenuService = (function () {
         return stockBarItem;
     };
     MenuService.prototype.getReportNbiItem = function () {
-        var reportBarItem = new NavBarItem("存量任务", "/test1");
+        var reportBarItem = new NavBarItem("存量任务", "/nofound");
         var items = [{
                 //是不是要重新命名一个新的？
                 label: 'File11',
