@@ -15,9 +15,10 @@ export class LoginService  {
   }
    loginUser: SystemUser; //如果不为空表示已登录，每次请求需附带登录信息
    authToken:string;
-   preLoginUrl:string;  //保存登录前地址用于导航
    userId:string;       //保存登录用户名
    pwd:string;          //保存登录密码
+   prePath:string;//保存登录前地址用于导航
+   info:string;
   initUserNameAndPwd() {
       this.userId = localStorage["userId"];
       this.pwd = localStorage["pwd"];
@@ -35,10 +36,5 @@ export class LoginService  {
     localStorage["userId"] = userId;
     localStorage["pwd"] = pwd;
   }
-
-
-
-
-
 
 }

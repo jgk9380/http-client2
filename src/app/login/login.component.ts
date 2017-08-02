@@ -22,11 +22,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
         this.ls.initUserNameAndPwd();
-        this.userId = this.ls.userId
-        this.pwd = this.ls.pwd
+        this.userId = this.ls.userId;
+        this.pwd = this.ls.pwd;
+        this.info=this.ls.info;
   }
   close(){
-    this.router.navigate([this.ls.preLoginUrl||"frame"]);
+    this.router.navigate([this.ls.prePath||"frame"]);
   }
 
 
@@ -58,7 +59,7 @@ export class LoginComponent implements OnInit {
           this.ls.authToken=response.json().token;
           console.log("authToken12="+this.ls.authToken);
           //TODO 更新当前登录用户信息
-          this.router.navigate([this.ls.preLoginUrl || "frame"]);
+          this.router.navigate([this.ls.prePath || "frame"]);
           return true;
         }
       ).catch((x: any) => {

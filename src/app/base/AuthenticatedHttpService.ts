@@ -9,12 +9,13 @@ import 'rxjs/add/observable/throw';
 import {LoginService} from "./Login.service";
 import {SystemUser} from "./system-user";
 import {isType} from "@angular/core/src/type";
+import {Router} from "@angular/router";
 
 
 @Injectable()
 export class AuthenticatedHttpService extends Http {
 
-  constructor(backend: XHRBackend, defaultOptions: RequestOptions,public ls:LoginService) {
+  constructor(backend: XHRBackend, defaultOptions: RequestOptions,public ls:LoginService,private router: Router) {
     super(backend, defaultOptions);
   }
 
@@ -49,7 +50,14 @@ export class AuthenticatedHttpService extends Http {
       if ((error.status === 401 || error.status === 403) && (window.location.href.match(/\?/g) || []).length < 2) {
         console.log('----------The authentication session expires or the user is not authorised. Force refresh of the current page.--------');
         //TODO 保存原页面地址，并重定向到登录页面
+        //console.log("/ at:"+window.location.pathname  );
+        //let toSave=window.location.href.substring(window.location.href.indexOf("/"),window.location.href.length);
+        console.info("权限错误，保存路径："+window.location.pathname);
+        this.ls.prePath=window.location.pathname;
+        this.ls.info="没有访问权限，请登录后重新操作！！！";
+        this.router.navigateByUrl("/login");
        //window.location.href = window.location.href + '?' + new Date().getMilliseconds();
+
       }
       return Observable.throw(error);
     });

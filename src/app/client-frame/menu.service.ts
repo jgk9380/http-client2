@@ -11,11 +11,12 @@ export class MenuService {
   currentMenuItem: MenuItem;
 
   constructor(private router: Router, private route:ActivatedRoute) {
-    this.currentNbi = new NavBarItem("工作计划", "frame/wp")
+    //TODO根据展示
+    this.currentNbi = new NavBarItem("工作计划", "frame/wp",null)
     this.currentNbi.isSelected = true;
     this.nbiItems.push(this.currentNbi);
-    this.nbiItems.push(new NavBarItem("报表查询", "frame/nofound"));
-    this.nbiItems.push(new NavBarItem("系统管理", "frame/sysAdmin"));
+    this.nbiItems.push(new NavBarItem("报表查询", "frame/test2",null));
+    this.nbiItems.push(new NavBarItem("系统管理", "frame/sysAdmin",['xtgl']));
   }
 
   getCurrentNavBarItem(): NavBarItem[] {
@@ -63,8 +64,6 @@ export class MenuService {
     this.currentNbi.isSelected = true;
     this.router.navigate([this.currentNbi.link]);//退回到上一个barItem；
   }
-
-
 }
 
 
@@ -72,9 +71,12 @@ export class NavBarItem {
   title: string;
   link: string;
   isSelected: boolean = false;
-  constructor(title: string, link: string) {
+  roles:string[];
+  constructor(title: string, link: string ,roles:string[]) {
+    //todo 角色
     this.title = title;
     this.link = link;
+    this.roles=roles;
   }
 }
 
