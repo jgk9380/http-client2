@@ -4,13 +4,6 @@
   </header>
   <div class="menu-bar">
     <hc-menu-bar></hc-menu-bar>
-    <div class="greeting">
-      <span>
-        欢迎你：{{ls.realName}}&nbsp;&nbsp;
-      </span>
-      <span class="fa fa-key " (click)="showEdit()">&nbsp;</span>
-      <span class="fa fa-lock" (click)="loginOut()">&nbsp;</span>
-    </div>
   </div>
   <div class="main">
     <!--<nav class="nav-menu" *ngIf="menuShow">-->
@@ -42,94 +35,5 @@
 <!--<http-client-loginUserAdmin></http-client-loginUserAdmin>-->
 <!--&lt;!&ndash;需要 font-awesone 支持&ndash;&gt;-->
 <!--</p-dialog>-->
-
-
-<p-dialog header="修改密码" [(visible)]="showEditPwdPopup" [modal]="true" width="400" [resizable]="false" [closable]="true"
-          [draggable]="false" [closeOnEscape]="true">
-  <form class="form-horizontal" role="form">
-    <div class="form-group">
-      <label for="pwd1" class="col-sm-4 control-label">密码：</label>
-      <div class="col-sm-8">
-        <input type="password" class="form-control" id="pwd1" placeholder="请输入密码" [(ngModel)]="newPwd1" name="pwd">
-      </div>
-      <hr/>
-      <label for="pwd2" class="col-sm-4 control-label">重复：</label>
-      <div class="col-sm-8">
-        <input type="password" class="form-control" id="pwd2" placeholder="请输入密码" [(ngModel)]="newPwd2" name="pwd">
-      </div>
-    </div>
-    <div class="form-group" *ngIf="info">
-      <div class="col-sm-offset-3 col-sm-9">
-        <label style="color: red">
-          {{ls.info}}
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <span class="col-sm-offset-2 col-sm-2">
-        <button type="button" id="editpwd" class="btn btn-primary" (click)="editPwd()">修改密码</button>
-      </span>
-      <span class="col-sm-offset-2 col-sm-2">
-        <button type="button" id="close1" class="btn btn-primary" (click)="showEditPwd=false">关闭</button>
-      </span>
-    </div>
-
-  </form>
-</p-dialog>
-
-
-<p-dialog header="登录" [visible]="showLoginPopup"  [modal]="true" width="400" [resizable]="false" [closable]="false"
-            [draggable]="true" [closeOnEscape]="true" >
-
-    <form class="form-horizontal" role="form">
-      <div class="form-group" *ngIf="ls.info">
-        <div class="col-sm-offset-3 col-sm-9">
-          <label style="color: red">
-            {{ls.info}}
-          </label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="loginId" class="col-sm-3 control-label">用户名：</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="loginId" placeholder="请输入用户名" [(ngModel)]="ls.userId" name="name">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="pwd" class="col-sm-3 control-label">密码：</label>
-        <div class="col-sm-9">
-          <input type="password" class="form-control" id="pwd" placeholder="请输入密码" [(ngModel)]="ls.pwd" name="pwd"
-                 (keyup.enter)="login()">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-9">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" [(ngModel)]="ls.rememberMe" name="remerberMe">记住我
-            </label>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="form-group">
-
-        <div  class="col-sm-offset-2 col-sm-2">
-          <button type=" button " id="submit" class="btn btn-primary" (click)="login()">登　　录
-          </button>
-        </div>
-
-        <div  class="col-sm-offset-2 col-sm-2">
-          <button type="button" id="close" class="btn btn-primary" (click)="ls.showPopup=false;">关　　闭</button>
-        </div>
-
-      </div>
-    </form>
-  </p-dialog>
 
 

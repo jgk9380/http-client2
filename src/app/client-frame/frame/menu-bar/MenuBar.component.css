@@ -32,8 +32,8 @@ div.title:hover {
   color: #feff8d;
 }
 
-.greeting{
+.greeting {
   display: inline;
-  float: left;
+  float: right;
   margin-right: 2em;
 }

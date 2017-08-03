@@ -37,7 +37,7 @@ var FrameComponent = (function () {
         console.log("auth=" + auth);
         headers.append('Authorization', auth);
         //headers.append("Access-Control-Allow-Origin", "*");
-        var login_url = this.gc.baseUrl + 'users/currentUser';
+        var login_url = this.gc.RestBaseUrl + 'users/currentUser';
         return this.http.get(login_url, { headers: headers })
             .toPromise().then(function (response) {
             console.log("res.result=" + response.json().result + "   bool= " + (response.json().result === 1) + "  result=" + response.json().result);
@@ -59,7 +59,7 @@ var FrameComponent = (function () {
         }).catch(function (x) {
             console.error("登录失败");
             var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-            var valid_url = _this.gc.baseUrl + 'users/valid/' + _this.userId + "/" + _this.pwd;
+            var valid_url = _this.gc.RestBaseUrl + 'users/valid/' + _this.userId + "/" + _this.pwd;
             _this.http.get(valid_url, { headers: headers })
                 .toPromise().then(function (response) {
                 _this.infoResult = response.json().msg;
@@ -74,7 +74,7 @@ var FrameComponent = (function () {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         headers.append('Accept', "application/json");
         //headers.append("Access-Control-Allow-Origin", "*");
-        var query_url = this.gc.baseUrl + 'users/queryPwd/' + this.userId;
+        var query_url = this.gc.RestBaseUrl + 'users/queryPwd/' + this.userId;
         return this.http.get(query_url, { headers: headers })
             .toPromise().then(function (response) {
             _this.infoResult = response.json().msg;
@@ -83,7 +83,7 @@ var FrameComponent = (function () {
         });
     };
     FrameComponent.prototype.getPrincipal = function () {
-        var principal_url = this.gc.baseUrl + "/users/currentUser";
+        var principal_url = this.gc.RestBaseUrl + "/users/currentUser";
         return this.http.get(principal_url)
             .toPromise()
             .then(function (response) {

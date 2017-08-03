@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     //let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     let options = new RequestOptions({headers: headers});
-    let login_url = this.gc.baseUrl + 'login';
+    let login_url = this.gc.RestBaseUrl + 'login';
     let body = "username=" + this.ls.userId + "&passwd=" + this.ls.pwd;
     //let body=JSON.stringify({username:this.userId,passwd:this.pwd})
     //console.log("body=" + body);

@@ -7,7 +7,7 @@ import { SysMainComponent } from './main/sys-main.component';
 import { UserAdminComponent } from './user-admin/user-admin.component';
 import { UserListComponent } from './user-list/user-list.component';
 import {Routes, RouterModule} from "@angular/router";
-import {NotFoundComponent} from "../nofound/not-found.component";
+
 const sysRoutes: Routes = [
   { path: '', component: SysMainComponent,
     children: [
@@ -21,6 +21,7 @@ const sysRoutes: Routes = [
 
 @NgModule({
   imports: [
+    CommonModule,
     RouterModule.forChild(sysRoutes),
   ],
   exports:[

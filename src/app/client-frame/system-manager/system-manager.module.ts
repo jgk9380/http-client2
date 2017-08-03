@@ -4,7 +4,6 @@ import { SysMainComponent } from './main/sys-main.component';
 import { UserAdminComponent } from './user-admin/user-admin.component';
 import { UserListComponent } from './user-list/user-list.component';
 import {Routes, RouterModule} from "@angular/router";
-import {NotFoundComponent} from "../nofound/not-found.component";
 import {SystemManagerRouterModule} from "./system-manager.route";
 
 @NgModule({

@@ -4,12 +4,10 @@ import {LoginService} from "../base/Login.service";
 
 
 @Injectable()
-export class MenuService {
+export class NavBarService {
   nbiItems: NavBarItem[] = [];//横菜单
   lastNbi: NavBarItem[] = [];
-  currentNbi: NavBarItem;//及左菜单
-  lastMenuItem: MenuItem[] = [];
-  currentMenuItem: MenuItem;
+  currentNbi: NavBarItem;
 
   constructor(private router: Router, private route: ActivatedRoute, private ls: LoginService) {
     //TODO根据展示
@@ -24,28 +22,6 @@ export class MenuService {
     return this.nbiItems;
   }
 
-  expanded(mi: MenuItem) {
-    mi.expanded = !mi.expanded;
-  }
-
-  click(mi: MenuItem) {
-    if (this.currentMenuItem) {
-      this.currentMenuItem.isSelected = false;
-      this.lastMenuItem.push(this.currentMenuItem);
-    }
-    this.currentMenuItem = mi;
-    mi.isSelected = true;
-
-    if (mi.routerLink) {
-      this.router.navigate([mi.routerLink]);
-      console.log("menu:" + this.currentMenuItem.label + " isSelected and navigate  to link=" + this.currentMenuItem.routerLink);
-    }
-    else {
-      console.log("menu:" + this.currentMenuItem.label + " isSelected and no  link=");
-    }
-    console.log("selected=" + mi.isSelected)
-  }
-
   clickBarItem(nbi: NavBarItem) {
     console.log("click on navBar:" + nbi.title + "  links = " + nbi.link)
     if (this.currentNbi) {
@@ -57,14 +33,6 @@ export class MenuService {
     this.currentNbi = nbi;
     this.router.navigate([nbi.link]);
   }
-
-  goBack() {
-    if (this.currentNbi)
-      this.currentNbi.isSelected = false;
-    this.currentNbi = this.lastNbi.pop();
-    this.currentNbi.isSelected = true;
-    this.router.navigate([this.currentNbi.link]);//退回到上一个barItem；
-  }
 }
 
 
@@ -72,22 +40,23 @@ export class NavBarItem {
   title: string;
   link: string;
   isSelected: boolean = false;
-  roles: string[];
+  //用户具有其中一个权限就显示，为空表示无需权限。
+  requireRroles: string[];
 
   constructor(title: string, link: string, roles: string[]) {
     //todo 角色
     this.title = title;
     this.link = link;
-    this.roles = roles;
+    this.requireRroles = roles;
   }
 
   isShow(roles: string[]): boolean {
-    //console.log("toles="+roles+"  this.roles="+this.roles);
-    if (!this.roles)
+    //console.log("roles="+roles+"  this.requireRroles="+this.requireRroles);
+    if (!this.requireRroles)
       return true;
     for( let seq1 in roles) {
-       for(let seq2 in this.roles){
-         if(roles[seq1]==this.roles[seq2]) {
+       for(let seq2 in this.requireRroles){
+         if(roles[seq1]==this.requireRroles[seq2]) {
            return true;
          }
        }
@@ -96,16 +65,15 @@ export class NavBarItem {
   }
 }
 
-export class MenuItem {
-  label: string;
-  icon?: string;
-  command?: (event?: any) => void;
-  url?: string;
-  routerLink?: any;
-  //eventEmitter?: EventEmitter<any>;
-  items?: MenuItem[];
-  expanded?: boolean;
-  disabled?: boolean;
-  isSelected?: boolean = false;
-
-}
+// export class MenuItem{
+//   label: string;
+//   icon?: string;
+//   command?: (event?: any) => void;
+//   url?: string;
+//   routerLink?: any;
+//   //eventEmitter?: EventEmitter<any>;
+//   items?: MenuItem[];
+//   expanded?: boolean;
+//   disabled?: boolean;
+//   isSelected?: boolean = false;
+// }

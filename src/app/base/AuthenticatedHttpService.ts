@@ -50,9 +50,9 @@ export class AuthenticatedHttpService extends Http {
       if ((error.status === 401 || error.status === 403) && (window.location.href.match(/\?/g) || []).length < 2) {
         console.log('----------The authentication session expires or the user is not authorised. Force refresh of the current page.--------');
         //TODO 保存原页面地址，并重定向到登录页面
-        //console.log("/ at:"+window.location.pathname  );
-        //let toSave=window.location.href.substring(window.location.href.indexOf("/"),window.location.href.length);
-        this.ls.info="没有权限，请重新登录后操作！！！";
+
+        let toSave=window.location.href.substring(window.location.href.indexOf("/"),window.location.href.length);
+        this.ls.info="无相关权限，重新登录后操作!";
         console.info("---this.ls.info="+this.ls.info);
         this.ls.showPopup=true;
        //window.location.href = window.location.href + '?' + new Date().getMilliseconds();

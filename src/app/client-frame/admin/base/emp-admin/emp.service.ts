@@ -15,7 +15,7 @@ export class EmpService {
   };
 
   getEmps(): Promise<Employee[]> {
-    let emp_url = this.gc.baseUrl + "emps/";
+    let emp_url = this.gc.RestBaseUrl + "emps/";
     // let headers = new Headers({'Content-Type': 'application/json'});
     // headers.append('Accept', "application/json");
     return this.http.get(emp_url, {headers: this.gc.getJsonHeade()})
@@ -24,7 +24,7 @@ export class EmpService {
 
   queryEmps(where:string): Promise<Employee[]> {
     if(where) {
-      let emp_query_url = this.gc.baseUrl + "emps/query/" + where;
+      let emp_query_url = this.gc.RestBaseUrl + "emps/query/" + where;
       let headers = new Headers({'Content-Type': 'application/json'});
       headers.append('Accept', "application/json");
       return this.http.get(emp_query_url, {headers: headers})

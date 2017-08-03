@@ -34,6 +34,7 @@ export class LoginService  {
     this.authToken=null;
     //localStorage["userId"] = "";
     localStorage["pwd"] = "";
+    this.pwd="";
     return Promise.resolve(true);
   }
 

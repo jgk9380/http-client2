@@ -16,22 +16,19 @@ import {WpAddComponent} from "../work-plan/wp-add/wp-add.component";
  */
 
 const cfRoutes: Routes = [
-  { path: 'frame', component: FrameComponent,
+  {
+    path: 'frame', component: FrameComponent,
     children: [
-      {path: '',redirectTo:"test3",pathMatch:"full"},
+      // {path: '',redirectTo:"test3",pathMatch:"full"},
       //{path: 'wp', component:WpMainComponent},
       {path: 'test2', component: Test2Component},
       {path: 'test3', component: Test3Component},
       {path: 'wp', loadChildren: 'app/work-plan/work-plan.module#WorkPlanModule'},
-
-      //wpRoutes[0],
-      //{path: 'sysAdmin', component:  SysMainComponent},
-     {path: 'sysAdmin', loadChildren: 'app/client-frame/system-manager/system-manager.module#SystemManagerModule'},
-      {path: '**', component:NotFoundComponent},
+      {path: 'sysAdmin', loadChildren: 'app/client-frame/system-manager/system-manager.module#SystemManagerModule'},
+      {path: '**', component: NotFoundComponent},
     ]
   },
 ];
-
 
 
 @NgModule({
@@ -46,6 +43,6 @@ const cfRoutes: Routes = [
 })
 
 
-export class ClientFrameRouteModule{
+export class ClientFrameRouteModule {
 
 }

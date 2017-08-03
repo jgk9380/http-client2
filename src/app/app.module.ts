@@ -8,7 +8,7 @@ import {MessagesModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 import {LoginService} from "./base/Login.service";
 import {MenuModule, PanelMenuModule} from 'primeng/primeng';
-import {MenuService} from "./client-frame/menu.service";
+import {NavBarService} from "./client-frame/NavBar.service";
 import {DialogModule} from 'primeng/primeng';
 import {GlobalService} from "./base/global-config.service";
 import {AuthenticatedHttpService} from "./base/AuthenticatedHttpService";
@@ -64,7 +64,7 @@ import {SystemManagerModule} from "./client-frame/system-manager/system-manager.
     {provide: BrowserXhr, useClass: CorsBrowserXhr},
     {provide: Http, useClass: AuthenticatedHttpService},
     LoginService,
-    MenuService,
+    NavBarService,
     GlobalService
   ],
   bootstrap: [MainComponent]

@@ -15,7 +15,7 @@ export class LoginUserAdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    let user_url = this.gc.baseUrl + "users/";
+    let user_url = this.gc.RestBaseUrl + "users/";
     return this.http.get(user_url, {headers: this.gc.getJsonHeade()})
       .toPromise().then(response => {
         this.loginUsers = response.json() as any[];

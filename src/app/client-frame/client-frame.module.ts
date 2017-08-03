@@ -15,7 +15,6 @@ import {MenuModule} from "primeng/components/menu/menu";
 import {PanelMenuModule} from "primeng/components/panelmenu/panelmenu";
 import {DialogModule} from "primeng/components/dialog/dialog";
 import {Num2chinesePipe} from "../base/num2chinese.pipe";
-import {NotFoundComponent} from "./nofound/not-found.component";
 import {Test2Component} from "./test2/test2.component";
 import {Test3Component } from './test3/test3.component';
 import {WorkPlanModule} from "../work-plan/work-plan.module";
@@ -41,7 +40,6 @@ import {ClientFrameRouteModule} from "./client-frame.route";
     Num2chinesePipe,
     FrameComponent,
     StockComponent,
-    NotFoundComponent,
     Test2Component,
     Test3Component,
     MenuComponent,
@@ -51,7 +49,6 @@ import {ClientFrameRouteModule} from "./client-frame.route";
     ClientFrameRouteModule
   ],
 })
-
 
 export class ClientFrameModule{
   constructor(){

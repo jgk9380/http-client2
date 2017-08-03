@@ -21,7 +21,7 @@ export class Test2Component implements OnInit {
     console.info("test1");
     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     let options = new RequestOptions({headers: headers});
-    let login_url = this.gc.baseUrl + 'testjwt1';
+    let login_url = this.gc.RestBaseUrl + 'testjwt1';
     //let body=JSON.stringify({username:this.userId,passwd:this.pwd})
     //console.log("body=" + body);
     return this.http.post(login_url, options)
@@ -40,7 +40,7 @@ export class Test2Component implements OnInit {
     console.info("test2");
     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     let options = new RequestOptions({headers: headers});
-    let login_url = this.gc.baseUrl + 'testjwt2';
+    let login_url = this.gc.RestBaseUrl + 'testjwt2';
     //let body=JSON.stringify({username:this.userId,passwd:this.pwd})
     //console.log("body=" + body);
     return this.http.post(login_url, options)
