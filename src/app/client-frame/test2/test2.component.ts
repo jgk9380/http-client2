@@ -8,7 +8,8 @@ import {GlobalService} from "../../base/global-config.service";
   styleUrls: ['test2.component.css']
 })
 export class Test2Component implements OnInit {
-name:string;
+
+  name: string;
   constructor(public http: Http, private gc: GlobalService) {
   }
 

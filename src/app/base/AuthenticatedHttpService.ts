@@ -52,12 +52,10 @@ export class AuthenticatedHttpService extends Http {
         //TODO 保存原页面地址，并重定向到登录页面
         //console.log("/ at:"+window.location.pathname  );
         //let toSave=window.location.href.substring(window.location.href.indexOf("/"),window.location.href.length);
-        console.info("权限错误，保存路径："+window.location.pathname);
-        this.ls.prePath=window.location.pathname;
-        this.ls.info="没有访问权限，请登录后重新操作！！！";
-        this.router.navigateByUrl("/login");
+        this.ls.info="没有权限，请重新登录后操作！！！";
+        console.info("---this.ls.info="+this.ls.info);
+        this.ls.showPopup=true;
        //window.location.href = window.location.href + '?' + new Date().getMilliseconds();
-
       }
       return Observable.throw(error);
     });

@@ -3,17 +3,27 @@
     <p-dialog header="登录" [visible]="true" [modal]="true" width="400" [resizable]="false" [closable]="false"
               [draggable]="false" [closeOnEscape]="false">
       <form class="form-horizontal" role="form">
+
+        <div class="form-group" *ngIf="ls.info">
+          <div class="col-sm-offset-3 col-sm-9">
+            <label style="color: red">
+              {{ls.info}}
+            </label>
+          </div>
+        </div>
+
+
         <div class="form-group">
           <label for="loginId" class="col-sm-3 control-label">用户名：</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="loginId" placeholder="请输入用户名" [(ngModel)]="userId" name="name">
+            <input type="text" class="form-control" id="loginId" placeholder="请输入用户名" [(ngModel)]="ls.userId" name="name">
           </div>
         </div>
 
         <div class="form-group">
           <label for="pwd" class="col-sm-3 control-label">密码：</label>
           <div class="col-sm-9">
-            <input type="password" class="form-control" id="pwd" placeholder="请输入密码" [(ngModel)]="pwd" name="pwd"
+            <input type="password" class="form-control" id="pwd" placeholder="请输入密码" [(ngModel)]="ls.pwd" name="pwd"
                    (keyup.enter)="login()">
           </div>
         </div>
@@ -22,19 +32,13 @@
           <div class="col-sm-offset-3 col-sm-9">
             <div class="checkbox">
               <label>
-                <input type="checkbox" [(ngModel)]="rememberMe" name="remerberMe">记住我
+                <input type="checkbox" [(ngModel)]="ls.rememberMe" name="remerberMe">记住我
               </label>
             </div>
           </div>
         </div>
 
-        <div class="form-group" *ngIf="info">
-          <div class="col-sm-offset-3 col-sm-9">
-            <label style="color: red">
-              {{info}}
-            </label>
-          </div>
-        </div>
+
 
         <div class="form-group">
 
@@ -47,9 +51,9 @@
             <button type="button" id="cancel" class="btn btn-primary" (click)="queryPwd()">密码查询</button>
           </div>
 
-          <div *ngIf="ls.authToken" class="col-sm-offset-1 col-sm-2">
-            <button type="button" id="close" class="btn btn-primary" (click)="close()">关　　闭</button>
-          </div>
+          <!--<div *ngIf="ls.authToken" class="col-sm-offset-1 col-sm-2">-->
+            <!--<button type="button" id="close" class="btn btn-primary" (click)="close()">关　　闭</button>-->
+          <!--</div>-->
           <!--<div class="col-sm-2">-->
           <!--<button type="button" id="test" class="btn btn-primary" (click)="test()">test</button>-->
           <!--</div>-->
