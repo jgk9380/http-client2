@@ -20,7 +20,10 @@ export class LoginService  {
   // prePath:string;//保存登录前地址用于导航
    info:string;
    rememberMe=true;
-   showPopup=false;
+   showPopup=false;//用于frame显示登录对话框，非组件。
+   realName:string;
+   currentUserRoles:string[];
+
   initUserNameAndPwd() {
       this.userId = localStorage["userId"];
       this.pwd = localStorage["pwd"];
@@ -39,5 +42,14 @@ export class LoginService  {
     localStorage["pwd"] = this.pwd;
   }
 
+  extraData(json:any){
+    if (this.rememberMe) {
+      this.rememberCurrent();
+    }
+    this.authToken=json.token;
+    this.realName=json.realName;
+    this.currentUserRoles=json.roles;
+    this.showPopup=false;
+  }
 
 }

@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.ls.initUserNameAndPwd();
   }
 
-  queryPwd(){
+  queryPwd() {
     // TODO 查询密码
     alert("暂无此功能");
     //return Promise.resolve(false);
@@ -32,11 +32,10 @@ export class LoginComponent implements OnInit {
   }
 
 
-
   login(): Promise<boolean> {
-   //this.ls.userId=this.userId;
-  // this.ls.pwd=this.pwd;
-   //let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
+    //this.ls.userId=this.userId;
+    // this.ls.pwd=this.pwd;
+    //let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     let options = new RequestOptions({headers: headers});
     let login_url = this.gc.baseUrl + 'login';
@@ -45,20 +44,13 @@ export class LoginComponent implements OnInit {
     //console.log("body=" + body);
     return this.http.post(login_url, body, options)
       .toPromise().then(response => {
-          console.log("登录成功" + response.json());
-          if (this.ls.rememberMe) {
-            this.ls.rememberCurrent();
-          }
-          this.ls.authToken=response.json().token;
-          console.log("authToken12="+this.ls.authToken);
-          //TODO 更新当前登录用户信息
-          this.ls.showPopup=false;
+          console.log("登录成功" + JSON.stringify(response.json()));
+          this.ls.extraData(response.json());
           this.router.navigate(["frame"]);
           return true;
-
         }
       ).catch((x: any) => {
-        this.ls.info="用户名或密码错误";
+        this.ls.info = "用户名或密码错误";
         console.error("登录失败");
         this.gc.handleError(x);
         return false;

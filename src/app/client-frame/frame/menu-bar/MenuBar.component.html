@@ -1,5 +1,5 @@
 <div class="title"  *ngFor="let item of ms.getCurrentNavBarItem()">
-      <span [class.current]="item.isSelected" (click)="ms.clickBarItem(item)">{{item.title}}</span>
+      <span *ngIf="item.isShow(ls.currentUserRoles)" [class.current]="item.isSelected" (click)="ms.clickBarItem(item)">{{item.title}}</span>
 </div>
 
 

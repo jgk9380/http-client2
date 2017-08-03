@@ -37,23 +37,9 @@ export class FrameComponent implements OnInit {
   }
 
   ngOnInit() {
-  this.setLoginName();
+
   }
 
-  setLoginName(){
-    let headers = new Headers({'Content-Type': 'application/json'});
-    //let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-    headers.append('Accept', "application/json");
-    //headers.append("Access-Control-Allow-Origin", "*");
-    let query_url = this.gc.baseUrl + 'realLoginUser';
-    this.http.get(query_url, {headers: headers})
-      .toPromise().then(response => {
-      console.info("return=" + response.json());
-      this.loginName = response.json().employee.name;
-    }).catch((x: any) => {
-      this.gc.handleError(x);
-    });
-  }
   showEdit() {
     console.info("show edit...")
     this.showEditPwdPopup = true;
@@ -115,18 +101,10 @@ export class FrameComponent implements OnInit {
     //console.log("body=" + body);
     return this.http.post(login_url, body, options)
       .toPromise().then(response => {
-          console.log("登录成功" + response.json());
-          if (this.ls.rememberMe) {
-            this.ls.rememberCurrent();
-          }
-          this.ls.authToken=response.json().token;
-          console.log("authToken12="+this.ls.authToken);
-          //TODO 更新当前登录用户信息
-          //this.router.navigate(["frame"]);
-          this.ls.showPopup=false;
-          this.setLoginName();
-          return true;
-
+        console.log("登录成功" + response.json());
+        this.ls.extraData(response.json());
+        this.ls.showPopup=false;
+        return true;
         }
       ).catch((x: any) => {
         console.error("登录失败");
