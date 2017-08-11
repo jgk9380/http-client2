@@ -53,7 +53,7 @@ export class AuthenticatedHttpService extends Http {
 
         let toSave=window.location.href.substring(window.location.href.indexOf("/"),window.location.href.length);
         this.ls.info="无相关权限，重新登录后操作!";
-        console.info("---this.ls.info="+this.ls.info);
+        console.info("---this.ls.info="+this.ls.info+"  window.location.href="+window.location.href);
         this.ls.showPopup=true;
        //window.location.href = window.location.href + '?' + new Date().getMilliseconds();
       }

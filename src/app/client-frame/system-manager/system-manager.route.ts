@@ -7,6 +7,7 @@ import { SysMainComponent } from './main/sys-main.component';
 import { UserAdminComponent } from './user-admin/user-admin.component';
 import { UserListComponent } from './user-list/user-list.component';
 import {Routes, RouterModule} from "@angular/router";
+import {DepartAdminComponent} from "./depart-admin/depart-admin.component";
 
 const sysRoutes: Routes = [
   { path: '', component: SysMainComponent,
@@ -14,6 +15,7 @@ const sysRoutes: Routes = [
       {path: '',redirectTo:"list",pathMatch:"full"},
       {path: 'userAdmin', component: UserAdminComponent},
       {path: 'list', component: UserListComponent},
+      {path: 'departAdmin', component: DepartAdminComponent},
       // {path: '**', component:NotFoundComponent },
     ]
   },

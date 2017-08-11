@@ -20,17 +20,17 @@ import {Http, Headers, RequestOptions} from "@angular/http";
 
 export class NavBar implements OnInit {
   // menuShow: boolean;
-
+  authCodePath: string;
   newPwd1:string;
   newPwd2:string;
   showEditPwdPopup:boolean;
-  showLoginPopup:boolean;
+  authCode:string;
 
   constructor(private router: Router, public ls:LoginService, public  ms:NavBarService,private gc: GlobalService,public http: Http) {
   }
 
   ngOnInit() {
-
+    this.authCodePath = this.gc.RestBaseUrl + "authCode"+"?time="+new Date().getTime();
     // console.log("items.len="+this.items.length);
   }
   loginOut():void {
@@ -78,15 +78,18 @@ export class NavBar implements OnInit {
   login(): Promise<boolean> {
     //this.ls.userId=this.userId;
     // this.ls.pwd=this.pwd;
-    //let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
-    let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-    let options = new RequestOptions({headers: headers});
+    let options = this.ls.getRequestOptions();
     let login_url = this.gc.RestBaseUrl + 'login';
-    let body = "username=" + this.ls.userId + "&passwd=" + this.ls.pwd;
-    //let body=JSON.stringify({username:this.userId,passwd:this.pwd})
+    //let body = "username=" + this.ls.userId + "&passwd=" + this.ls.pwd;
+    let body=JSON.stringify({username:this.ls.userId,passwd:this.ls.pwd,authCode:this.authCode})
     //console.log("body=" + body);
     return this.http.post(login_url, body, options)
       .toPromise().then(response => {
+        let returnData = response.json();
+        if (returnData.errorCode) {
+          this.ls.info = returnData.errorInfo;
+          return false;
+        }
           console.log("登录成功" + response.json());
           this.ls.extraData(response.json());
           this.ls.showPopup=false;
@@ -98,6 +101,14 @@ export class NavBar implements OnInit {
         this.ls.info="用户名或密码错误";
         return false;
       });
+  }
+
+  getAuthCodePath():string{
+    //this.authCodePath = this.gc.RestBaseUrl + "authCode"+"?"+new Date();
+    return this.authCodePath;
+  }
+  changeAuthCodePath(){
+    this.authCodePath = this.gc.RestBaseUrl + "authCode"+"?time="+new Date().getTime();
   }
 }
 

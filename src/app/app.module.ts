@@ -30,10 +30,15 @@ import {WpCompleteComponent} from "./work-plan/wp-complete/wp-complete.component
 import {ClientFrameRouteModule} from "./client-frame/client-frame.route";
 import {WorkPlanModule} from "./work-plan/work-plan.module";
 import {WorkPlanRouteModule} from "./work-plan/work-plan.route";
-import {AppRouterModule} from "./app-router.module";
+//import {AppRouterModule} from "./app-router.module1";
 import {SystemManagerModule} from "./client-frame/system-manager/system-manager.module";
 
 
+const routes: Routes = [
+  {path: '', redirectTo: '/', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
+  // {path: '**', component: NotFoundComponent}
+];
 
 @NgModule({
   imports: [
@@ -49,16 +54,18 @@ import {SystemManagerModule} from "./client-frame/system-manager/system-manager.
     MenuModule,
     PanelMenuModule,
     DialogModule,
+    RouterModule.forRoot(routes),
     BaseAdminModule,
     ClientFrameModule,
     WorkPlanModule,
     SystemManagerModule,
-    AppRouterModule
+    //AppRouterModule
   ],
   declarations: [
     LoginComponent,
     MainComponent,
     NotFoundComponent,
+
   ],
   providers: [
     {provide: BrowserXhr, useClass: CorsBrowserXhr},

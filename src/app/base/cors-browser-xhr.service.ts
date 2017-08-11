@@ -9,8 +9,10 @@ export class CorsBrowserXhr extends BrowserXhr {
   }
   build(): any {
     let xhr:XMLHttpRequest = super.build();
-    xhr.withCredentials = false;
-    //xhr.headers.common = { 'Access-Control-Allow-Origin' : '*' };
+    xhr.withCredentials = true;
+    //xhr.setRequestHeader("Access-Control-Allow-Credentials","true");
+    //xhr.setRequestHeader( 'Access-Control-Allow-Origin' , '*' );
+
     return <any>(xhr);
   }
 }

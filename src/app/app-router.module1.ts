@@ -14,22 +14,22 @@ import {WpAddComponent} from "./work-plan/wp-add/wp-add.component";
 import {WplistComponent} from "./work-plan/wp-list/wplist.component";
 import {ClientFrameRouteModule} from "./client-frame/client-frame.route";
 
-const routes: Routes = [
-  {path: '', redirectTo: '/', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent},
-  // {path: '**', component: NotFoundComponent}
-];
-
-@NgModule({
-  imports: [
-    ClientFrameRouteModule,
-    RouterModule.forRoot(routes),
-  ],
-  exports:[
-    RouterModule
-  ]
-
-})
+// const routes: Routes = [
+//   {path: '', redirectTo: '/', pathMatch: 'full'},
+//   {path: 'login', component: LoginComponent},
+//   // {path: '**', component: NotFoundComponent}
+// ];
+//
+// @NgModule({
+//   imports: [
+//     //ClientFrameRouteModule,
+//     RouterModule.forRoot(routes),
+//   ],
+//   exports:[
+//     RouterModule
+//   ]
+// })
 
 export class AppRouterModule {
+
 }

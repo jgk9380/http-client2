@@ -38,9 +38,11 @@ export class GlobalService {
   }
 
   handleError(error: any) {
+    this.info = "用户名或密码错误";
+    console.error("登录失败");
     let msg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'unknown error';
-    console.error("err.msg=" + msg); // log to console instead
+    alert("err.msg=" + msg); // log to console instead
     return Promise.reject(false);
   }
 

@@ -23,7 +23,7 @@ import {ClientFrameRouteModule} from "./client-frame.route";
 @NgModule({
   imports: [
     CommonModule,
-    SystemManagerModule,
+
     FormsModule,
     ButtonModule,
     DataTableModule,
@@ -33,6 +33,8 @@ import {ClientFrameRouteModule} from "./client-frame.route";
     PanelMenuModule,
     DialogModule,
     ClientFrameRouteModule,
+
+    SystemManagerModule,
     WorkPlanModule
   ],
   declarations: [
