@@ -64,16 +64,17 @@ export class LoginService {
     return options;
   }
 
-  dispResult(response: any, router: Router) {
+  dispResult(response: any, router: Router):Promise<boolean> {
     let returnData = response.json();
     if (returnData.errorCode) {
+      console.error("登录错误，返回："+JSON.stringify(returnData))
       this.info = returnData.errorInfo;
-      return false;
+      return Promise.resolve(false);
     }
     console.log("登录成功" + JSON.stringify(response.json()));
     this.extraData(returnData);
     router.navigate(["frame"]);
-    return true;
+    Promise.resolve(true);
   }
 
   handleError(error: any) {

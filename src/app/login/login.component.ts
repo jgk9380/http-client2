@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.ls.initUserNameAndPwd();
-    this.authCodePath = this.gc.RestBaseUrl + "authCode"+"?time="+new Date().getTime();
+    this.authCodePath = this.gc.RestBaseUrl + "authCode" + "?time=" + new Date().getTime();
   }
 
   queryPwd() {
@@ -33,24 +33,26 @@ export class LoginComponent implements OnInit {
     //return Promise.resolve(false);
     console.info("无此功能");
   }
-getAuthCodePath():string{
-  //this.authCodePath = this.gc.RestBaseUrl + "authCode"+"?"+new Date();
-  return this.authCodePath;
-}
-  changeAuthCodePath(){
-    this.authCodePath = this.gc.RestBaseUrl + "authCode"+"?time="+new Date().getTime();
+
+  getAuthCodePath(): string {
+    //this.authCodePath = this.gc.RestBaseUrl + "authCode"+"?"+new Date();
+    return this.authCodePath;
+  }
+
+  changeAuthCodePath() {
+    this.authCodePath = this.gc.RestBaseUrl + "authCode" + "?time=" + new Date().getTime();
   }
 
   login(): Promise<boolean> {
-  if(!this.ls.userId){
-    this.ls.info = "请输入用户名！";
-    return Promise.resolve(false);
-  }
-    if(!this.ls.pwd){
+    if (!this.ls.userId) {
+      this.ls.info = "请输入用户名！";
+      return Promise.resolve(false);
+    }
+    if (!this.ls.pwd) {
       this.ls.info = "请输入密码！";
       return Promise.resolve(false);
     }
-    if(!this.authCode){
+    if (!this.authCode) {
       this.ls.info = "请输入验证码！";
       return Promise.resolve(false);
     }
@@ -59,7 +61,9 @@ getAuthCodePath():string{
     let body = JSON.stringify({username: this.ls.userId, passwd: this.ls.pwd, authCode: this.authCode});
     console.log("body=" + body);
     return this.http.post(login_url, body, options)
-      .toPromise().then(response => this.ls.dispResult(response,this.router)
+      .toPromise().then(response => {
+          return this.ls.dispResult(response, this.router)
+        }
       ).catch((x: any) => {
         return this.ls.handleError(x);
       });

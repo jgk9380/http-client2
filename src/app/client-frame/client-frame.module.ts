@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Routes, RouterModule} from "@angular/router";
 import {MenuComponent} from "../menu/Menu.component";
-import {NavBar} from "./frame/menu-bar/MenuBar.component";
+import {NavBar} from "./menu-bar/MenuBar.component";
 import {StockComponent} from "./Stock/stock.component";
 import {FormsModule} from "@angular/forms";
 import {FrameComponent} from "./frame/frame.component";

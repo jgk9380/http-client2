@@ -6,9 +6,9 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {MenuItem} from "primeng/components/common/api";
 
-import {NavBarItem, NavBarService} from "../../NavBar.service";
-import {LoginService} from "../../../base/Login.service";
-import {GlobalService} from "../../../base/global-config.service";
+import {NavBarItem, NavBarService} from "../NavBar.service";
+import {LoginService} from "../../base/Login.service";
+import {GlobalService} from "../../base/global-config.service";
 import {Http, Headers, RequestOptions} from "@angular/http";
 
 @Component({
